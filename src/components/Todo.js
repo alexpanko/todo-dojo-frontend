@@ -1,11 +1,33 @@
+//Bootstrap
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+//Redux
+import { useDispatch } from "react-redux";
+import { todoDeleted, todoToggled } from "../redux/todosSlice";
 
-const Task = ({ task, onToggle, onDelete }) => {
+
+const Todo = ({ id, text, completed }) => {
+
+  const dispatch = useDispatch();
+
+  const deleteTodo=()=>{
+		dispatch(
+			todoDeleted({id: id})
+		)
+	}
+
+  const toogleTodo=()=>{
+		dispatch(
+			todoToggled({
+				id: id
+			})
+		)
+	}
+
   return (
     <ListGroup.Item>
       <Container fluid className="p-0">
@@ -13,28 +35,26 @@ const Task = ({ task, onToggle, onDelete }) => {
           <Col xs={1}>
             <Form.Check
               type="checkbox"
-              id={task.id}
-              onChange={() => onToggle(task.id)}
+              onChange={() => toogleTodo()}
             />
           </Col>
           <Col
             className={`${
-              task.status && 'text-decoration-line-through text-secondary'
+              completed && 'text-decoration-line-through text-secondary'
             }`}
             xs={10}
           >
-            {task.task}
+            {text}
           </Col>
           <Col xs={1} className="d-flex justify-content-end">
             <Button
               variant="light"
-              id="deleteTask"
               style={{
                 backgroundColor: 'white',
                 border: '0px',
                 padding: '0px',
               }}
-              onClick={() => onDelete(task.id)}
+              onClick={() => deleteTodo()}
             >
               <i className="bi bi-trash h4 text-secondary"></i>
             </Button>
@@ -45,4 +65,4 @@ const Task = ({ task, onToggle, onDelete }) => {
   );
 };
 
-export default Task;
+export default Todo;

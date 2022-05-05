@@ -1,11 +1,18 @@
+//State management and Redux
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { todoAdded } from '../redux/todosSlice';
+//Bootstrap
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
-const AddTask = ({ onAdd }) => {
+
+const AddTodo = () => {
+  const dispatch = useDispatch();
   const [task, setTask] = useState('')
+  const [id, setId] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,13 +22,20 @@ const AddTask = ({ onAdd }) => {
       return
     }
 
-    onAdd({ task })
+    dispatch(
+      todoAdded({
+        text: task,
+        id: id
+      })
+    )
 
-    setTask('')
-  };
+setTask('')
+
+  }
 
   const handleChange = (e) => {
     setTask(e.target.value)
+    setId(Math.floor(Math.random() * 10000))
   }
 
   return (
@@ -42,4 +56,4 @@ const AddTask = ({ onAdd }) => {
   );
 };
 
-export default AddTask;
+export default AddTodo;
