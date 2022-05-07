@@ -7,18 +7,26 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-
+//Components
+import AlertAddTask from './AlertAddTask';
 
 const AddTodo = () => {
   const dispatch = useDispatch();
   const [task, setTask] = useState('')
   const [id, setId] = useState('')
+  const [isNotSubmitted, setIsNotSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //Popup
+    // if(!task) {
+    //   alert('Please add a task')
+    //   return
+    // }
+
     if(!task) {
-      alert('Please add a task')
+      setIsNotSubmitted(true)
       return
     }
 
@@ -29,8 +37,8 @@ const AddTodo = () => {
       })
     )
 
-setTask('')
-
+    setTask('')
+    setIsNotSubmitted(false)
   }
 
   const handleChange = (e) => {
@@ -39,7 +47,8 @@ setTask('')
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
+<div>
+<Form onSubmit={handleSubmit}>
       <InputGroup className="my-3">
         <FormControl
           type="text"
@@ -53,6 +62,8 @@ setTask('')
         </Button>
       </InputGroup>
     </Form>
+    {isNotSubmitted && <AlertAddTask />}
+</div>
   );
 };
 
