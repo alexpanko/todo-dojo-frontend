@@ -6,37 +6,36 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 //Redux
-import { useDispatch } from "react-redux";
-import { todoDeleted, todoToggled } from "../redux/todosSlice";
+// import { useDispatch } from "react-redux";
+// import { todoDeleted, todoToggled } from "../redux/todosSlice";
 
+const Todo = ({ id, task, completed }) => {
+  // const dispatch = useDispatch();
 
-const Todo = ({ id, text, completed }) => {
+  const deleteTodo = () => {
+    console.log('Delete todo');
+    
+    // dispatch(
+    // 	todoDeleted({id: id})
+    // )
+  };
 
-  const dispatch = useDispatch();
+  const toogleTodo = () => {
+    console.log('Toogle todo');
 
-  const deleteTodo=()=>{
-		dispatch(
-			todoDeleted({id: id})
-		)
-	}
-
-  const toogleTodo=()=>{
-		dispatch(
-			todoToggled({
-				id: id
-			})
-		)
-	}
+    // dispatch(
+    // 	todoToggled({
+    // 		id: id
+    // 	})
+    // )
+  };
 
   return (
     <ListGroup.Item>
       <Container fluid className="p-0">
         <Row>
           <Col xs={1}>
-            <Form.Check
-              type="checkbox"
-              onChange={() => toogleTodo()}
-            />
+            <Form.Check type="checkbox" onChange={() => toogleTodo()} />
           </Col>
           <Col
             className={`${
@@ -44,7 +43,7 @@ const Todo = ({ id, text, completed }) => {
             }`}
             xs={10}
           >
-            {text}
+            {task}
           </Col>
           <Col xs={1} className="d-flex justify-content-end">
             <Button

@@ -1,12 +1,13 @@
 //Bootstratp
 import ListGroup from 'react-bootstrap/ListGroup';
+
 //Components
 import Todo from './Todo';
 //Redux
 import { useSelector } from "react-redux";
 
-
 const Todos = () => {
+
   const todos = useSelector((state)=>{
 		return state.todos;
 	});
