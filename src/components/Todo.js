@@ -5,29 +5,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-//Redux
-// import { useDispatch } from "react-redux";
-// import { todoDeleted, todoToggled } from "../redux/todosSlice";
+
+// RTK Query API
+// import { useDeleteTodoMutation } from '../redux/todosApi';
 
 const Todo = ({ id, task, completed }) => {
-  // const dispatch = useDispatch();
 
-  const deleteTodo = () => {
-    console.log('Delete todo');
-    
-    // dispatch(
-    // 	todoDeleted({id: id})
-    // )
+  const onDeleteHandler = (id) => {
+    console.log(`Delete todo with id of ${id}`);
   };
 
-  const toogleTodo = () => {
-    console.log('Toogle todo');
-
-    // dispatch(
-    // 	todoToggled({
-    // 		id: id
-    // 	})
-    // )
+  const toogleTodo = (id) => {
+    console.log(`Toogle todo with id of ${id}`);
   };
 
   return (
@@ -35,7 +24,7 @@ const Todo = ({ id, task, completed }) => {
       <Container fluid className="p-0">
         <Row>
           <Col xs={1}>
-            <Form.Check type="checkbox" onChange={() => toogleTodo()} />
+            <Form.Check type="checkbox" onChange={() => toogleTodo(id)} />
           </Col>
           <Col
             className={`${
@@ -53,7 +42,7 @@ const Todo = ({ id, task, completed }) => {
                 border: '0px',
                 padding: '0px',
               }}
-              onClick={() => deleteTodo()}
+              onClick={() => onDeleteHandler(id)}
             >
               <i className="bi bi-trash h4 text-secondary"></i>
             </Button>
