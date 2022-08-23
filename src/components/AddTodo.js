@@ -1,7 +1,5 @@
 //State management and Redux
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { todoAdded } from '../redux/todosSlice';
 //Bootstrap
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -11,7 +9,6 @@ import Button from 'react-bootstrap/Button';
 import AlertAddTask from './AlertAddTask';
 
 const AddTodo = () => {
-  const dispatch = useDispatch();
   const [task, setTask] = useState('')
   const [id, setId] = useState('')
   const [isNotSubmitted, setIsNotSubmitted] = useState(false)
@@ -19,24 +16,22 @@ const AddTodo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //Popup
-    // if(!task) {
-    //   alert('Please add a task')
-    //   return
-    // }
-
     if(!task) {
       setIsNotSubmitted(true)
       return
     }
 
-    dispatch(
-      todoAdded({
-        text: task,
-        id: id
-      })
-    )
 
+    async function addTodo() {
+      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ task: task }),
+      });
+      console.log('Task added');
+    }
+
+    addTodo();
     setTask('')
     setIsNotSubmitted(false)
   }

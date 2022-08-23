@@ -5,18 +5,46 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-
-// RTK Query API
-// import { useDeleteTodoMutation } from '../redux/todosApi';
+import { useNavigate } from 'react-router-dom';
 
 const Todo = ({ id, task, completed }) => {
+  let navigate = useNavigate();
 
+  //State not updated need to resolve
   const onDeleteHandler = (id) => {
     console.log(`Delete todo with id of ${id}`);
+
+    async function deleteTodo() {
+      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
+        method: 'DELETE',
+      });
+      console.log('Task deleted');
+      navigate('/');
+    }
+
+    deleteTodo();
   };
 
-  const toogleTodo = (id) => {
+  const onToogleHandler = (id) => {
+    let isCompleted;
+    if (completed === true) {
+      isCompleted = false;
+    } else {
+      isCompleted = true;
+    }
     console.log(`Toogle todo with id of ${id}`);
+
+    async function toogleTodo() {
+      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ completed: isCompleted }),
+      });
+      console.log('Task updated');
+      navigate('/');
+    }
+
+    toogleTodo();
   };
 
   return (
@@ -24,7 +52,18 @@ const Todo = ({ id, task, completed }) => {
       <Container fluid className="p-0">
         <Row>
           <Col xs={1}>
-            <Form.Check type="checkbox" onChange={() => toogleTodo(id)} />
+            {completed === true ? (
+              <Form.Check
+                type="checkbox"
+                defaultChecked
+                onChange={() => onToogleHandler(id)}
+              />
+            ) : (
+              <Form.Check
+                type="checkbox"
+                onChange={() => onToogleHandler(id)}
+              />
+            )}
           </Col>
           <Col
             className={`${
