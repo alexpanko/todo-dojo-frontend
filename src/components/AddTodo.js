@@ -10,7 +10,6 @@ import AlertAddTask from './AlertAddTask';
 
 const AddTodo = () => {
   const [task, setTask] = useState('')
-  const [id, setId] = useState('')
   const [isNotSubmitted, setIsNotSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
@@ -38,7 +37,6 @@ const AddTodo = () => {
 
   const handleChange = (e) => {
     setTask(e.target.value)
-    setId(Math.floor(Math.random() * 10000))
   }
 
   return (
