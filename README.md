@@ -10,7 +10,7 @@
 npm install
 ```
 
-### Run the app in the development mode on [http://localhost:3000](http://localhost:3000)
+### Run the app in the development mode on `localhost:3000`
 
 ```
 npm start
@@ -24,8 +24,6 @@ npm run build
 
 ## Tech stack
 
-To build this App I used folowing technology and packages:
-
 ### Technology
 
 - React Hooks (useEffect, useState)
@@ -36,7 +34,7 @@ To build this App I used folowing technology and packages:
 
 - The API is live at [todo-dojo-api.herokuapp.com](https://todo-dojo-api.herokuapp.com/)
 - API documentation [here](https://documenter.getpostman.com/view/10852837/Uzs13mfV)
-- API code [here] (https://github.com/alexpanko/todo-dojo-api/)
+- API code [here](https://github.com/alexpanko/todo-dojo-api/)
 
 ## Demo
 
