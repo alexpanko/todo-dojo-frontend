@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 //Components
 import AlertAddTask from './AlertAddTask';
 
-const AddTodo = () => {
+const AddTodo = ({ onAdd }) => {
   const [task, setTask] = useState('')
   const [isNotSubmitted, setIsNotSubmitted] = useState(false)
 
@@ -20,17 +20,18 @@ const AddTodo = () => {
       return
     }
 
+    // async function addTodo() {
+    //   await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/`, {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ task: task }),
+    //   });
+    //   console.log('Task added');
+    // }
 
-    async function addTodo() {
-      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ task: task }),
-      });
-      console.log('Task added');
-    }
+    // addTodo();
 
-    addTodo();
+    onAdd({ task })
     setTask('')
     setIsNotSubmitted(false)
   }

@@ -5,47 +5,47 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
-const Todo = ({ id, task, completed }) => {
-  let navigate = useNavigate();
+const Todo = ({ id, task, completed, onDeleteHandler, onToogleHandler }) => {
+  // let navigate = useNavigate();
 
   //State not updated need to resolve
-  const onDeleteHandler = (id) => {
-    console.log(`Delete todo with id of ${id}`);
+  // const onDeleteHandler = (id) => {
+  //   console.log(`Delete todo with id of ${id}`);
 
-    async function deleteTodo() {
-      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
-        method: 'DELETE',
-      });
-      console.log('Task deleted');
-      navigate('/');
-    }
+  //   async function deleteTodo() {
+  //     await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
+  //       method: 'DELETE',
+  //     });
+  //     console.log('Task deleted');
+  //     navigate('/');
+  //   }
 
-    deleteTodo();
-  };
+  //   deleteTodo();
+  // };
 
-  const onToogleHandler = (id) => {
-    let isCompleted;
-    if (completed === true) {
-      isCompleted = false;
-    } else {
-      isCompleted = true;
-    }
-    console.log(`Toogle todo with id of ${id}`);
+  // const onToogleHandler = (id) => {
+  //   let isCompleted;
+  //   if (completed === true) {
+  //     isCompleted = false;
+  //   } else {
+  //     isCompleted = true;
+  //   }
+  //   console.log(`Toogle todo with id of ${id}`);
 
-    async function toogleTodo() {
-      await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ completed: isCompleted }),
-      });
-      console.log('Task updated');
-      navigate('/');
-    }
+  //   async function toogleTodo() {
+  //     await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
+  //       method: 'PUT',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ completed: isCompleted }),
+  //     });
+  //     console.log('Task updated');
+  //     navigate('/');
+  //   }
 
-    toogleTodo();
-  };
+  //   toogleTodo();
+  // };
 
   return (
     <ListGroup.Item>
@@ -56,12 +56,12 @@ const Todo = ({ id, task, completed }) => {
               <Form.Check
                 type="checkbox"
                 defaultChecked
-                onChange={() => onToogleHandler(id)}
+                onChange={() => onToogleHandler(id, completed)}
               />
             ) : (
               <Form.Check
                 type="checkbox"
-                onChange={() => onToogleHandler(id)}
+                onChange={() => onToogleHandler(id, completed)}
               />
             )}
           </Col>
