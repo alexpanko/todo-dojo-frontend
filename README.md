@@ -1,70 +1,47 @@
-# ToDo App with Redux-Toolkit
+# ToDo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This is a front-end React application to work with a ToDo Dojo API.
 
-## Available Scripts
+## Usage
 
-In the project directory, you can run:
+### Install Dependencies
 
-### `npm start`
+```
+npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Run the app in the development mode on [http://localhost:3000](http://localhost:3000)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+npm start
+```
 
-### `npm test`
+### Build the app for production to the `build` folder
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm run build
+```
 
-### `npm run build`
+## Tech stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To build this App I used folowing technology and packages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Technology
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Hooks (useEffect, useState)
+- React Bootstrap front-end framework
+- Fetch API
 
-### `npm run eject`
+### ToDo Dojo API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- The API is live at [todo-dojo-api.herokuapp.com](https://todo-dojo-api.herokuapp.com/)
+- API documentation [here](https://documenter.getpostman.com/view/10852837/Uzs13mfV)
+- API code [here] (https://github.com/alexpanko/todo-dojo-api/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+App is live at [todo-dojo.netlify.app](https://todo-dojo.netlify.app/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Version: 1.0.0
+- License: MIT
+- Author: Alex Panko

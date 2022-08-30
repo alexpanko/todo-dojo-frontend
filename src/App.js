@@ -11,19 +11,17 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  // const [updateTodos, setUpdateTodos] = useState(false);
 
-    // Fetch all totos
-    useEffect(() => {
-      fetcher()
-            // .then(() => setUpdateTodos(false));
-        }, [todos]);
+  // Fetch all totos
+  useEffect(() => {
+    fetcher();
+  }, [todos]);
 
   const fetcher = () => {
     fetch('https://todo-dojo-api.herokuapp.com/api/v1/todo')
       .then((resp) => resp.json())
-      .then(({ data }) => setTodos(data))
-  }
+      .then(({ data }) => setTodos(data));
+  };
 
   // Add todo
   const addTodo = ({ task }) => {
@@ -33,8 +31,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ task: task }),
       });
-      // setUpdateTodos(true);
-      fetcher()
+      fetcher();
     }
 
     addTodo();
@@ -46,7 +43,6 @@ function App() {
       await fetch(`https://todo-dojo-api.herokuapp.com/api/v1/todo/${id}`, {
         method: 'DELETE',
       });
-      // setUpdateTodos(true);
     }
 
     deleteTodo();
@@ -67,7 +63,6 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: isCompleted }),
       });
-      // setUpdateTodos(true);
     }
 
     toogleTodo();
